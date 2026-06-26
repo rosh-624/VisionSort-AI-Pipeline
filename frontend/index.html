@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VisionSort | Waste Classification Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="dashboard">
+        <header>
+            <div>
+                <h1>♻ VisionSort AI</h1>
+                <p>AI-Powered Smart Waste Classification & Recycling Intelligence Platform</p>
+            </div>
+
+            <span class="status">SYSTEM ONLINE</span>
+        </header>
+
+        <main class="grid">
+
+            <section class="card upload-card">
+                <h2>Live Waste Stream Input</h2>
+                <p>Upload a waste image for AI-powered material classification.</p>
+
+                <input type="file" id="imageInput" accept="image/*">
+                <button onclick="predictWaste()">Analyze Waste</button>
+
+                <div class="preview-box">
+                    <img id="previewImage" alt="Preview">
+                </div>
+            </section>
+
+            <section class="card result-card">
+                <h2>Classification Output</h2>
+
+                <div class="prediction">
+                    <span id="predictedClass">--</span>
+                    <small>Predicted Material</small>
+                </div>
+
+                <div class="metric">
+                    <label>Confidence</label>
+                    <div class="bar">
+                        <div id="confidenceBar"></div>
+                    </div>
+                    <p id="confidenceText">--%</p>
+                </div>
+
+                <div class="details">
+                    <p><strong>Risk Level:</strong> <span id="riskLevel">--</span></p>
+                    <p><strong>Inference Time:</strong> <span id="inferenceTime">-- ms</span></p>
+                    <p><strong>Disposal:</strong> <span id="disposal">--</span></p>
+                </div>
+
+                <div id="warningBox" class="warning">
+                    Awaiting input...
+                </div>
+            </section>
+
+            <section class="card history-card">
+                <h2>Prediction History</h2>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Material</th>
+                            <th>Confidence</th>
+                            <th>Risk</th>
+                            <th>Time</th>
+                        </tr>
+                    </thead>
+
+                    <tbody id="historyTable">
+                        <tr>
+                            <td colspan="4">No records yet</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+
+            <section class="card metrics-card">
+                <h2>AI System Analytics</h2>
+
+                <div class="metrics-grid">
+                    <div>
+                        <h3 id="totalPredictions">0</h3>
+                        <p>Total Predictions</p>
+                    </div>
+
+                    <div>
+                        <h3 id="avgConfidence">0%</h3>
+                        <p>Average Confidence</p>
+                    </div>
+
+                    <div>
+                        <h3>6</h3>
+                        <p>Waste Categories</p>
+                    </div>
+
+                    <div>
+                        <h3>CNN</h3>
+                        <p>Classification Model</p>
+                    </div>
+                </div>
+
+                <div class="chart-box">
+                    <canvas id="wasteChart"></canvas>
+                </div>
+            </section>
+
+            <section class="card system-card">
+                <h2>🖥 System Information</h2>
+
+                <div class="system-grid">
+                    <div class="system-item">
+                        <span>🤖 AI Model</span>
+                        <strong>CNN Classifier</strong>
+                    </div>
+
+                    <div class="system-item">
+                        <span>⚙ Backend</span>
+                        <strong>FastAPI</strong>
+                    </div>
+
+                    <div class="system-item">
+                        <span>🗄 Database</span>
+                        <strong>MongoDB</strong>
+                    </div>
+
+                    <div class="system-item">
+                        <span>📦 Dataset</span>
+                        <strong>2527 Images</strong>
+                    </div>
+
+                    <div class="system-item">
+                        <span>🧠 Classes</span>
+                        <strong>6 Categories</strong>
+                    </div>
+
+                    <div class="system-item">
+                        <span>🟢 Status</span>
+                        <strong class="online">ONLINE</strong>
+                    </div>
+                </div>
+            </section>
+
+            <section class="card performance-card">
+                <h2>📈 AI Model Performance</h2>
+
+                <div class="metrics-grid">
+                    <div>
+                        <h3>84%</h3>
+                        <p>Training Accuracy</p>
+                    </div>
+
+                    <div>
+                        <h3>64%</h3>
+                        <p>Validation Accuracy</p>
+                    </div>
+
+                    <div>
+                        <h3>6</h3>
+                        <p>Waste Classes</p>
+                    </div>
+
+                    <div>
+                        <h3>224×224</h3>
+                        <p>Input Resolution</p>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
